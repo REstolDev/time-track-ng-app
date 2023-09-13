@@ -1,0 +1,56 @@
+@import "../../../sass/mixins.scss","../../../sass/variables.scss";
+
+.watch {
+    padding: 0.5rem 1rem;
+    display: grid;
+    grid-template-columns: 35% 5% 35% 5% 20%;
+    grid-template-rows: 90% 10%;
+    align-items: baseline;
+    justify-items: center;
+  
+    &__h2--h {
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+      font-family: var(--tipo-secundaria);
+      @include h1();
+      @include h1Desktop();
+    }
+    &__p--minSep {
+      grid-row: 1 / 2;
+      grid-column: 2 / 3;
+      @include h2();
+      @include h2Desktop();
+      align-self: center;
+    }
+  
+    &__h2--min {
+      grid-row: 1 / 2;
+      grid-column: 3 / 4;
+      @include h1();
+      @include h1Desktop();
+    }
+    &__p--secSep {
+      grid-column: 4 / 5;
+      grid-row: 1 / 2;
+      @include h2();
+      @include h2Desktop();
+    }
+    &__h4--sec {
+      grid-column: 5 / 6;
+      grid-row: 1 / 2;
+      @include h2();
+      @include h2Desktop();
+    }
+    &__h3--h {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+      @include h3();
+      @include h3Desktop();
+    }
+    &__h3--min {
+      grid-column: 3 / 4;
+      grid-row: 2 / 3;
+      @include h3();
+      @include h3Desktop();
+    }
+  }

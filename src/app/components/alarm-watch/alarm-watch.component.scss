@@ -1,0 +1,28 @@
+@import "../../../sass/mixins.scss","../../../sass/variables.scss";
+
+.alarm-watch {
+    @include flex(row, nowrap, left, center);
+  
+    &__btn {
+      padding: 0.35rem;
+      width: 2rem;
+      height: 2rem;
+      background-color: var(--grey);
+      border-radius: 50%;
+  
+      &:hover {
+        background-color: var(--greyHover);
+      }
+    }
+    &__svg {
+      color: var(--green);
+      width: 24px;
+      &:hover {
+        color: var(--greenHover);
+      }
+    }
+
+    &__h3 {
+      margin: 0 0.5rem;
+    }
+  }

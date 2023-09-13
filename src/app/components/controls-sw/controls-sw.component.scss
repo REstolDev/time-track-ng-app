@@ -1,0 +1,46 @@
+@import "../../../sass/mixins.scss","../../../sass/variables.scss";
+
+.controls {
+    @include flex(row, nowrap,center, center);
+    gap:3rem;
+    height: 100%;
+    @include tablet{ 
+      @include flex(column, nowrap, space-evenly, center);
+      gap:0;
+    };
+    &__btn {
+      width: 2.5rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.5rem;
+      @include laptop() {
+        width: 3rem;
+      }
+  
+      &.greenBG {
+        background-color: var(--green);
+        &:hover {
+          background-color: var(--greenHover);
+        }
+      }
+      &.redBG {
+        background-color: var(--red);
+        &:hover {
+          background-color: var(--redHover);
+        }
+      }
+      &.blueBG {
+        background-color: var(--blue);
+        &:hover {
+          background-color: var(--blueHover);
+        }
+      }
+    }
+  
+    &__svg {
+      width: 1.5rem;
+      @include laptop() {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+  }

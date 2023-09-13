@@ -1,0 +1,194 @@
+@charset "UTF-8";
+/* Definimos las Custom properties */
+:root {
+  /* Colores */
+  --negro: #393939;
+  --blanco: #f6f2ef;
+  /* Tipografía */
+  --tipo-principal: "Roboto", sans-serif;
+  --tipo-secundaria: "Inter Tight", sans-serif;
+}
+
+/* (Opcional) Las adaptamos al modo oscuro */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --negro: #f6f2ef;
+    --blanco: #393939;
+  }
+}
+/* (Opcional) Configuramos si un usuario ha activado el modo alto contraste. (WD) */
+/* (Opcional) Desactivamos los animations en el caso de que el usuario haya configurado el modo sin animation */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+/* Reseteamos los margin y paddings de todas las etiquetas */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  vertical-align: baseline;
+}
+
+*::before, *::after {
+  display: block;
+}
+
+/* Evitamos problemas con las imagenes */
+img, picture, video, iframe, figure {
+  max-width: 100%;
+  width: 100%;
+  display: block;
+  /* (Opcional) */
+  -o-object-fit: cover;
+     object-fit: cover;
+  /* (Opcional) */
+  -o-object-position: center center;
+     object-position: center center;
+}
+
+/* Reseteamos los enlaces para funcionar como cajas... */
+a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  font-size: inherit;
+}
+
+/* ... excepto los que se encuentran en párrafos */
+p a {
+  display: inline;
+}
+
+/* Quitamos los puntos de los <li> */
+li {
+  list-style-type: none;
+}
+
+/* (Opcional) Configuramos anclas suaves */
+html {
+  scroll-behavior: smooth;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-gutter: auto;
+}
+
+/* Desactivamos estilos por defecto de las principales etiquetas de texto */
+h1, h2, h3, h4, h5, h6, p, span, a, strong, blockquote, i, b, u, em {
+  font-size: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Evitamos problemas con los pseudoelementos de quotes */
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+
+/* (Opcional) Configuramos el texto que seleccionamos */
+::-moz-selection {
+  background-color: var(--black);
+  color: var(--white);
+}
+::selection {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+/* Nivelamos problemas de tipografías y colocación de formularios */
+form, input, textarea, select, button, label {
+  font-family: inherit;
+  font-size: inherit;
+  -webkit-hyphens: auto;
+          hyphens: auto;
+  background-color: transparent;
+  color: inherit;
+  display: block;
+  /* (Opcional) */
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+/* Reseteamos las tablas */
+table, tr, td {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Evitamos problemas con los SVG */
+svg {
+  width: 100%;
+  display: block;
+  fill: currentColor;
+}
+
+/* Configuramos la tipografía para toda la web */
+body {
+  min-height: 100dvh;
+  font-size: 100%;
+  font-family: var(--tipo-principal);
+  color: var(--negro);
+  background-color: var(--blanco);
+  /* (Opcional) */
+  -webkit-hyphens: none;
+          hyphens: none;
+  /* (Opcional) */
+  font-smooth: always;
+  /* (Opcional) */
+  -webkit-font-smoothing: antialiased;
+  /* (Opcional) */
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  cursor: pointer;
+}
+
+:root {
+  /* Colores */
+  --black: #393939;
+  --white: #f6f2ef;
+  --red: #c11119;
+  --green: #2bb871;
+  --grey: #8f8f8f6d;
+  --darkgrey: #8f8f8f;
+  --blue: #2a5aea;
+  --yellow: #f8c948;
+  --redHover: #a40e16;
+  --greenHover: #22975d;
+  --greyHover: #6060606d;
+  --blueHover: #2147b9;
+  --yellowHover: #cfa83d;
+  /* Tipografía */
+  --tipo-principal: "Roboto", sans-serif;
+  --tipo-secundaria: "Inter Tight", sans-serif;
+  --fontsize-p: 1rem;
+  --fontsize-h1: 4.8rem;
+  --fontsize-h2: 2.8rem;
+  --fontsize-h3: 0.75rem;
+  --fontweight-p: 300;
+  --fontweight-strong: 600;
+  --fontweight-h1: 600;
+  --fontweight-h2: 600;
+  --fontweight-h3: 300;
+  --fontsize-pDesktop: 1.125rem ;
+  --fontsize-h1Desktop: 9rem ;
+  --fontsize-h2Desktop: 6rem ;
+  --fontsize-h3Desktop: 0.95rem ;
+  --fontweight-pDesktop: 400;
+  --fontweight-h1Desktop: 800;
+  --fontweight-h2Desktop: 800;
+  --fontweight-h3Desktop: 300;
+}
+
+:root .darkMode {
+  color: var(--blanco);
+  background-color: var(--negro);
+}/*# sourceMappingURL=styles.css.map */

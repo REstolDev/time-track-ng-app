@@ -1,0 +1,20 @@
+@import '../../../sass/mixins.scss','../../../sass/variables.scss';
+
+.error{
+    height: 100%;
+    text-align: center;
+    @include flex(column, nowrap, center, center);
+    gap:1rem;
+    background-color: var(--yellowHover);
+    border-radius: 0.5rem;
+    padding: 2rem;
+    &__h2{
+        @include h2();
+    }
+
+    &__h3{
+        @include h3();
+        @include h3Desktop();
+    }
+
+}

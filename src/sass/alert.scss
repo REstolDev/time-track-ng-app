@@ -1,0 +1,40 @@
+@import "./mixins.scss","./variables.scss";
+
+.alert {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  
+    &__content {
+      color: var(--negro);
+      background-color: var(--blanco);
+      padding: 2.5rem 2rem;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      text-align: left;
+      max-width: 23rem;
+      &.center{ text-align: center};
+    }
+  
+    &__div{
+      @include flex(row,nowrap, center,center);
+    }
+  
+    &__btn{
+      color:var(--black);
+      margin:1.5rem auto 0 auto;
+      background-color: var(--yellow);
+      border-radius: 0.5rem;
+      padding:0.5rem;
+      text-align: center;
+      &:hover{ background-color: var(--yellowHover);}
+    }
+  }

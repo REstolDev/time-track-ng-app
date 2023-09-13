@@ -1,0 +1,100 @@
+@mixin strong($family:var(--tipo-principal) ,$size:var(--fontsize-p), $weight:var(--fontweight-strong)){
+    font-family: $family;
+    font-size: $size;
+    font-weight: $weight;
+    color:var(--grey);
+}
+
+
+@mixin h1($family:var(--tipo-secundaria) ,$size:var(--fontsize-h1), $weight:var(--fontweight-h1)){
+    font-family: $family;
+    font-size: $size;
+    font-weight: $weight;
+}
+
+@mixin h2($family:var(--tipo-secundaria) ,$size:var(--fontsize-h2), $weight:var(--fontweight-h2)){
+    font-family: $family;
+    font-size: $size;
+    font-weight: $weight;
+}
+
+@mixin h3($family:var(--tipo-principal) ,$size:var(--fontsize-h3), $weight:var(--fontweight-h3)){
+    font-family: $family;
+    font-size: $size;
+    font-weight: $weight;
+}
+
+@mixin p($family:var(--tipo-principal) ,$size:var(--fontsize-p), $weight:var(--fontweight-p)){
+    font-family: $family;
+    font-size: $size;
+    font-weight: $weight;
+    line-height: 1.5rem;
+}
+
+@mixin h1Desktop($family:var(--tipo-secundaria) ,$size:var(--fontsize-h1Desktop), $weight:var(--fontweight-h1Desktop)){
+    @media screen and (min-width:960px){
+    font-family: $family;
+    font-size: $size;
+    font-weight: $weight;
+    }
+}
+
+@mixin h2Desktop($family:var(--tipo-secundaria) ,$size:var(--fontsize-h2Desktop), $weight:var(--fontweight-h2Desktop)){
+    @media screen and (min-width:960px){
+    font-family: $family;
+    font-size: $size;
+    font-weight: $weight;
+    }
+}
+
+@mixin h3Desktop($family:var(--tipo-principal) ,$size:var(--fontsize-h3Desktop), $weight:var(--fontweight-h3Desktop)){
+    @media screen and (min-width:960px){
+    font-family: $family;
+    font-size: $size;
+    font-weight: $weight;
+    }
+}
+@mixin pDesktop($family:var(--tipo-principal) ,$size:var(--fontsize-pDesktop), $weight:var(--fontweight-pDesktop)){
+    @media screen and (min-width:960px){
+        font-family: $family;
+        font-size: $size;
+        font-weight: $weight;
+        }
+}
+
+@mixin flex($dir,$corte,$just,$align){
+    display: flex; 
+    flex-flow:  $dir $corte;
+    justify-content: $just;
+    align-items: $align;
+}
+
+@mixin tablet($medida: 650px){
+    @media screen and (min-width:$medida){
+       @content;
+    }
+}
+
+@mixin laptop($medida: 960px){
+    @media screen and (min-width:$medida){
+       @content;
+    }
+}
+
+@mixin desktop($medida: 1280px){
+    @media screen and (min-width:$medida){
+       @content;
+    }
+}
+
+@mixin btn($bg-color:var(--yellow),$color:var(--black),$bg-color-hover:var(--yellowHover)){
+    background-color: $bg-color;
+    color: $color;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+
+    &:hover {
+      background-color: $bg-color-hover;
+    }
+}

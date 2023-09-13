@@ -1,0 +1,15 @@
+@import "../../../sass/mixins.scss","../../../sass/variables.scss";
+.statistics {
+  @include flex(row, nowrap, center, center);
+    &__div {
+      margin-right: 1rem;
+      margin-top: 1rem;
+    }
+    &__span {
+      min-width:8rem;
+      background-color: #f8c9484d;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      text-align: center;
+    }
+  }

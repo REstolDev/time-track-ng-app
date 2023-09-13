@@ -1,0 +1,50 @@
+@import "../../../sass/mixins.scss","../../../sass/variables.scss";
+
+.history {
+    padding: 0.5rem 0;
+    @include flex(column, nowrap, space-between, center);
+    gap: 1rem;
+    &__div {
+      @include flex(row, nowrap, space-evenly, center);
+      gap: 0.5rem;
+      &--results{
+        @include flex(column, nowrap, center, center);
+        gap: 2rem;
+      }
+      
+    }
+    &__select{
+      border: solid 0.5px var(--greyHover);
+      padding:0.25rem;
+      width: 6rem;
+      text-align: center;
+    }
+    &__span {
+      background-color: #f8c9484d;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      margin-top: 1rem;
+    }
+    &__td {
+      padding: 0.2rem 0.5rem;
+    }
+    &__btn{ @include btn();}
+    &__btnDel{
+      color: var(--red);
+      text-decoration: underline;
+      text-underline-offset: 0.25rem;
+  
+      &:hover{ color: var(--redHover) };
+    }
+  
+    &__svg{ 
+      min-width: 1rem;
+      color: var(--red);
+      &:hover{ color: var(--redHover) };
+      &--info{
+        margin-left:0.5rem;
+        color: var(--blue);
+        &:hover{ color: var(--blueHover) };
+      }
+    }
+  }

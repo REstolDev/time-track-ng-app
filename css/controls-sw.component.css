@@ -1,0 +1,94 @@
+@charset "UTF-8";
+:root {
+  /* Colores */
+  --black: #393939;
+  --white: #f6f2ef;
+  --red: #c11119;
+  --green: #2bb871;
+  --grey: #8f8f8f6d;
+  --darkgrey: #8f8f8f;
+  --blue: #2a5aea;
+  --yellow: #f8c948;
+  --redHover: #a40e16;
+  --greenHover: #22975d;
+  --greyHover: #6060606d;
+  --blueHover: #2147b9;
+  --yellowHover: #cfa83d;
+  /* Tipografía */
+  --tipo-principal: "Roboto", sans-serif;
+  --tipo-secundaria: "Inter Tight", sans-serif;
+  --fontsize-p: 1rem;
+  --fontsize-h1: 4.8rem;
+  --fontsize-h2: 2.8rem;
+  --fontsize-h3: 0.75rem;
+  --fontweight-p: 300;
+  --fontweight-strong: 600;
+  --fontweight-h1: 600;
+  --fontweight-h2: 600;
+  --fontweight-h3: 300;
+  --fontsize-pDesktop: 1.125rem ;
+  --fontsize-h1Desktop: 9rem ;
+  --fontsize-h2Desktop: 6rem ;
+  --fontsize-h3Desktop: 0.95rem ;
+  --fontweight-pDesktop: 400;
+  --fontweight-h1Desktop: 800;
+  --fontweight-h2Desktop: 800;
+  --fontweight-h3Desktop: 300;
+}
+
+.controls {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+@media screen and (min-width: 650px) {
+  .controls {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 0;
+  }
+}
+.controls.hide {
+  display: none;
+}
+.controls__btn {
+  width: 2.5rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+}
+@media screen and (min-width: 960px) {
+  .controls__btn {
+    width: 3rem;
+  }
+}
+.controls__btn.greenBG {
+  background-color: var(--green);
+}
+.controls__btn.greenBG:hover {
+  background-color: var(--greenHover);
+}
+.controls__btn.redBG {
+  background-color: var(--red);
+}
+.controls__btn.redBG:hover {
+  background-color: var(--redHover);
+}
+.controls__btn.blueBG {
+  background-color: var(--blue);
+}
+.controls__btn.blueBG:hover {
+  background-color: var(--blueHover);
+}
+.controls__svg {
+  width: 1.5rem;
+}
+@media screen and (min-width: 960px) {
+  .controls__svg {
+    width: 2rem;
+    height: 2rem;
+  }
+}/*# sourceMappingURL=controls-sw.component.css.map */

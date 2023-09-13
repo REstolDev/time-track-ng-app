@@ -1,0 +1,17 @@
+@import "../../../sass/mixins.scss","../../../sass/variables.scss";
+
+.project {
+  @include flex(row, nowrap, left, center);
+  background-color: var(--grey);
+  border-radius: 0.5rem;
+
+  &__input {
+    height: 2rem;
+    text-align: center;
+    margin: 0 0.5rem;
+    width: 8rem;
+    @include laptop() {
+      width: 10rem;
+    }
+  }
+}
