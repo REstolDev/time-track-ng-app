@@ -1,26 +1,26 @@
-<div class="container divToHide">
-  <a href="#" class="logo divToHide">
+<div class="container " [ngClass]="{ 'hide': isFullScreenWatchActivated }">
+  <a href="#" class="logo" [ngClass]="{ 'hide': isFullScreenWatchActivated }">
     <img src="../assets/logo/logoMrKai.png" alt="time track logo" class="logo__img">
     <h1 class="logo__h1">TIME<span class="logo__span">TRACK</span></h1>
   </a>
-  <button title="Deactivated Full Screen Mode" class="deactivateFullScreenBtn divToHide" id="deactivateFullScreenBtn">
+  <button title="Deactivated Full Screen Mode" class="deactivateFullScreenBtn " [ngClass]="{ 'hide': isFullScreenWatchActivated }" (click)="deactivatedFullScreenWatchMode()">
   </button>
-  <main class="content divToHide">
-    <section class="controls divToHide">
+  <main class="content">
+    <section class="controls" [ngClass]="{ 'hide': isFullScreenWatchActivated }">
       <app-controls-sw></app-controls-sw>
     </section>
-    <section class="header divToHide">
+    <section class="header " [ngClass]="{ 'hide': isFullScreenWatchActivated }">
       <app-alarm-watch></app-alarm-watch>
       <app-project-input></app-project-input>
     </section>
     <section class="watch">
       <app-stop-watch></app-stop-watch>
     </section>
-    <nav class="navbar divToHide">
+    <nav class="navbar " [ngClass]="{ 'hide': isFullScreenWatchActivated }">
       <app-navbar></app-navbar>
     </nav>
   </main>
-  <aside class="aside divToHide">
+  <aside class="aside " [ngClass]="{ 'hide': isFullScreenWatchActivated }">
     <router-outlet></router-outlet>
   </aside>
     <app-alert></app-alert>
