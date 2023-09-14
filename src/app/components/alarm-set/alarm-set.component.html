@@ -1,12 +1,44 @@
 <div class="alarm">
-    <div class="alarm__watch">
-      <!-- Uso el input tipo text porque con tipo number no se puedo usar la propiedad .length y limitar a dos caracteres-->
-      <label for="alarmHours" class="alarm__label">HOURS</label>
-      <input type="number"  oninput="limitTwoIntegers(this)" maxlength="2" min="0" max="24" id="alarmHours" name="alarmHours" class="alarm__input" value="0">
-      <label for="alarmMin" class="alarm__label">MINUTES</label>
-      <input type="number" oninput="limitTwoIntegers(this)" maxlength="2" min="0" max="59" id="alarmMin" name="alarmMin" class="alarm__input" value="0" >
-      <label for="alarmSec"  class="alarm__label">SECS</label>
-      <input type="number" oninput="limitTwoIntegers(this)" maxlength="2" min="0" max="59" id="alarmSec" name="alarmSec" class="alarm__input" value="0" >
-    </div>
-    <button title="Set Alarm" class="alarm__btn" id="setAlarm">SET</button>
+  <div class="alarm__watch">
+    <!-- Uso el input tipo text porque con tipo number no se puedo usar la propiedad .length y limitar a dos caracteres-->
+    <label for="alarmHours" class="alarm__label">HOURS</label>
+    <input
+      type="number"
+      [(ngModel)]="hours"
+      (input)="limitHours()"
+      maxlength="2"
+      min="0"
+      max="24"
+      name="alarmHours"
+      class="alarm__input"
+      value="0"
+    />
+    <label for="alarmMin" class="alarm__label">MINUTES</label>
+    <input
+      type="number"
+      [(ngModel)]="mins"
+      (input)="limitMinutes()"
+      maxlength="2"
+      min="0"
+      max="59"
+      id="alarmMins"
+      name="alarmMin"
+      class="alarm__input"
+      value="0"
+    />
+    <label for="alarmSec" class="alarm__label">SECS</label>
+    <input
+      type="number"
+      [(ngModel)]="secs"
+      (input)="limitSeconds()"
+      maxlength="2"
+      min="0"
+      max="59"
+      id="alarmSecs"
+      name="alarmSec"
+      class="alarm__input"
+      value="0"
+    />
+  </div>
+  <button title="Set Alarm" class="alarm__btn" (click)="setAlarm()">SET</button>
 </div>

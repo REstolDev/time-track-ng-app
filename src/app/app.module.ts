@@ -15,6 +15,7 @@ import { AlertComponent } from './components/alert/alert.component';
 import { ConfirmWindowComponent } from './components/confirm-window/confirm-window.component';
 import { Pag404Component } from './components/pag404/pag404.component';
 import { HomeComponent } from './components/home/home.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { HomeComponent } from './components/home/home.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

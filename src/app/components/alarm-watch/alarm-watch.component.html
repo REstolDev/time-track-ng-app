@@ -1,4 +1,4 @@
 <div class="alarm-watch">
-    <button title="Alarm Control" class="alarm-watch__btn" id="playAlarm"></button>
-    <h3 class="alarm-watch__h3" id="alarmTimer"></h3>
+    <button title="Alarm Control" class="alarm-watch__btn" [innerHTML]="svg" (click)="changeAlarmState()" ></button>
+    <h3 class="alarm-watch__h3" >{{alarmWatch}}</h3>
 </div>
