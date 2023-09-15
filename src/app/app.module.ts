@@ -17,6 +17,7 @@ import { Pag404Component } from './components/pag404/pag404.component';
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule } from '@angular/forms';
 
+
 @NgModule({
   declarations: [
     AppComponent,

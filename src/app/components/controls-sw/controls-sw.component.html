@@ -1,13 +1,13 @@
 <div class="controls">
-    <button title="Stop" class="controls__btn redBG" id="stopStopWatch">
+    <button title="Stop" class="controls__btn redBG" (click)="stopWatchTime()">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="controls__svg" viewBox="0 0 16 16">
       <path d="M5 3.5h6A1.5 1.5 0 0 1 12.5 5v6a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 11V5A1.5 1.5 0 0 1 5 3.5z"/>
     </svg></button>
-    <button title="Play" class="controls__btn greenBG" id="playStopWatch">
+    <button title="Play" class="controls__btn greenBG" (click)="playWatchTime()">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="controls__svg" viewBox="0 0 16 16">
       <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
     </svg></button>
-    <button title="Pause" class="controls__btn blueBG" id="pauseStopWatch">
+    <button title="Pause" class="controls__btn blueBG" (click)="pauseWatchTime()">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="controls__svg" viewBox="0 0 16 16">
         <path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/>
       </svg>

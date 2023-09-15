@@ -1,9 +1,9 @@
-<div id="customConfirm" class="alert">
+<div id="customConfirm" class="alert" *ngIf="msg">
     <div class="alert__content center">
-      <span id="customConfirmText" class="alert__span"></span>
+      <span id="customConfirmText" class="alert__span">{{msg}}</span>
       <div class="alert__div">
-        <button class="alert__btn" onclick="confirmAction(true)">Accept</button>
-        <button class="alert__btn" onclick="confirmAction(false)">Cancel</button>
+        <button class="alert__btn" (click)="confirmAction(true)">Accept</button>
+        <button class="alert__btn" (click)="confirmAction(false)">Cancel</button>
       </div>
     </div>
   </div>

@@ -38,6 +38,7 @@ export class SoundService {
 
   stop() {
     // Detiene el sonido y restablece el tiempo de reproducción a cero
+    this.isPaused = true;
     this.sound.pause();
     this.sound.currentTime = 0;
   }

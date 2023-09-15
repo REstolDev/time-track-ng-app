@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { SoundService } from './sound.service';
 import { BehaviorSubject,Observable } from 'rxjs';
 
 
@@ -13,7 +12,6 @@ export class AlarmService {
   mins: number= 0;
   secs: number = 0;
 
-  setAlarmTo: string = '00:00:00';
  // Utiliza BehaviorSubject para crear una variable observable con un valor inicial
  private setAlarmToSubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
@@ -21,9 +19,8 @@ export class AlarmService {
  public setAlarmTo$: Observable<number> = this.setAlarmToSubject.asObservable();
 
 
-  //state: 'play' | 'pause' | 'stopAlarm' | 'restart' = 'play';
 
-  constructor(  private sound:SoundService) {  }
+  constructor() {  }
 
 
    MiliSecToHourMinSec = (TotalMiliSec: number) => {
@@ -43,12 +40,6 @@ export class AlarmService {
   
 
    setAlarm = () => {
-   
-  
-    //controlamos que no este sonando la alarma
-    if (!this.sound.isSoundPaused) {
-      this.sound.stop();
-    }
   
     //convertimos a milisegundos
     this.alarmInMiliSec = this.secs * 1000 + this.mins * 60 * 1000 + this.hours * 3600 * 1000;
