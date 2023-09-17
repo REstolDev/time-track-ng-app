@@ -13,14 +13,15 @@ import { AlertService } from 'src/app/services/alert.service';
 export class HistoryComponent {
  
   showProjects : boolean = false;
-  projectsByNameSelectOptions : SafeHtml = "";
-  projectsByDateSelectOptions : SafeHtml = "";
+  orderedProjectsByName! : string[] ;
+  orderedProjectsByDate! : string[] ;
   selectedProjectName : string = "";
   selectedProjectDate : string = "";
   calcTotalTime : string = "";
   deleteAll : string = "";
   filteredProjects! : Project[];
   noResultsTxt : string = "";
+  selectAll : string = "No Options";
 
 
 
@@ -60,13 +61,13 @@ export class HistoryComponent {
     
     if (this.localStorageApiService.projects.length === 0) {
       this.showProjects = false;
-      this.noResultsTxt = "Storage Empty";
-      
+      this.noResultsTxt = "Storage Empty"
+      this.selectAll = "No Options";
     }
     else{
-    
-    this.projectsByNameSelectOptions = this.sanitizer.bypassSecurityTrustHtml(this.localStorageApiService.filterProjectsByName());
-    this.projectsByDateSelectOptions = this.sanitizer.bypassSecurityTrustHtml(this.localStorageApiService.filterProjectsByDate());
+      this.selectAll = "Select All";
+    this.orderedProjectsByName = this.localStorageApiService.orderProjectsByName();
+    this.orderedProjectsByDate = this.localStorageApiService.orderProjectsByDate();
     }
    
   };

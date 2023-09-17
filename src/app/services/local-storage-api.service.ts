@@ -3,7 +3,6 @@ import { Project } from '../class/project';
 import { AlertService } from './alert.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AlarmService } from './alarm.service';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +21,7 @@ export class LocalStorageAPIService {
 
   constructor( 
     private alertService : AlertService, 
-    private alarmService : AlarmService,
-    private sanitizer : DomSanitizer) { }
+    private alarmService : AlarmService) { }
 
   recoverProjects(): void {
     try {
@@ -36,7 +34,7 @@ export class LocalStorageAPIService {
   };
 
   add(timeDifference : number) : void {
-
+    if(!this.projectName) this.projectName = "NO NAME";
     this.recoverProjects();
     this.projects.push(
       new Project(
@@ -47,7 +45,6 @@ export class LocalStorageAPIService {
     );
     this.saveProjects();
     this.isDataChangedSubject.next(true) ;
-    // filter();
     this.alertService.showCustomAlert("Project saved");
   };
   
@@ -70,27 +67,16 @@ export class LocalStorageAPIService {
    
 
 
-  filterProjectsByName = () => {
-    const filterProjectsByName :string[] = [...new Set(this.projects.map((item) => item.name))];
-    
-    let listProjectsByName: string[] = filterProjectsByName.map(
-      (item) => `<option value="${item}">${item}</option>`
-    );
-    return `<option value="" selected>Select all</option> ${listProjectsByName.reduce(
-      (listado, prod) => listado + prod)}`;
+  orderProjectsByName = () => {
+    const orderedProjectsByName :string[] = [...new Set(this.projects.map((item) => item.name))];
+    return orderedProjectsByName;
   };
 
 
-  filterProjectsByDate = () => {
+  orderProjectsByDate = () => {
     
-    const filterProjectsByDate = [...new Set(this.projects.map((item) => this.convertToDate(item.date))),];
-    
-
-    let listProjectsByDate : string [] = filterProjectsByDate.map(
-      (item) => `<option value="${item}">${item}</option>`);
-
-    return `<option value="" selected>Select all</option> ${listProjectsByDate.reduce(
-      (listado, prod) => listado + prod)}`;
+    const orderedProjectsByDate = [...new Set(this.projects.map((item) => this.convertToDate(item.date))),];
+    return orderedProjectsByDate;
   };
 
 

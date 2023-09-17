@@ -1,10 +1,15 @@
 <div class="history">
     <div class="history__div filters">
       <label for="projectsName">by Project: </label>
-      <select name="projectsName" [(ngModel)]="selectedProjectName" class="history__select" [innerHTML]="projectsByNameSelectOptions">
+      <select name="projectsName" [(ngModel)]="selectedProjectName" class="history__select">
+        <option value="" selected>{{selectAll}}</option>
+        <option *ngFor="let item of orderedProjectsByName"  [value]="item" >{{item}}</option>
+
       </select>
       <label for="projectsDate">by Date: </label>
-      <select name="projectsDate" [(ngModel)]="selectedProjectDate" class="history__select" [innerHTML]="projectsByDateSelectOptions">
+      <select name="projectsDate" [(ngModel)]="selectedProjectDate" class="history__select">
+        <option value="" selected>{{selectAll}}</option>
+        <option *ngFor="let item of orderedProjectsByDate"  [value]="item" >{{item}}</option>
       </select>
     </div>  
     <button title="Filter History" class="history__btn" (click)="filter()">FILTER</button>
