@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { AlertService } from './alert.service';
 import { ConfirmService } from './confirm.service';
+import { LocalStorageAPIService } from './local-storage-api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +24,9 @@ export class StopWatchService {
  // Expón la variable observable como un Observable público
  public refreshTime$: Observable<{ hours: string; mins: string; secs: string }> = this.refreshTimeToSubject.asObservable();
 
-  constructor(private alertService : AlertService, private confirmService : ConfirmService) { }
+  constructor(
+    private confirmService : ConfirmService,
+    private localStorageApiService : LocalStorageAPIService) { }
 
   convertMiliSecs= (TotalMiliSecs : number) => {
     const hours : string = String(Math.floor(TotalMiliSecs / (1000 * 60 * 60))).padStart(
@@ -75,10 +77,7 @@ stopStopWatch = () => {
 
      // Preguntar al usuario si desea guardar el proyecto
     this.confirmService.customConfirm('Do you want to save this project in your Locale Storage?', (isConfirmed:boolean) => {
-      if(isConfirmed)     
-        this.alertService.showCustomAlert('Add');
-      else this.alertService.showCustomAlert('Cancel');
-
+      if(isConfirmed)    this.localStorageApiService.add(this.timeDifference) ;
 
       clearInterval(this.watchIdInterval);
       this.timeDifference = 0;
@@ -86,7 +85,6 @@ stopStopWatch = () => {
       this.isPaused = true;
       this.startingTime = null;
       this.refreshTimeToSubject.next(this.time) ;
-
 
      });
 

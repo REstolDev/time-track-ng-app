@@ -1,6 +1,6 @@
 <div id="customAlert" class="alert" *ngIf="msg">
     <div class="alert__content">
-      <span id="customAlertText" class="alert__span">{{ msg }}</span>
+      <span id="customAlertText" class="alert__span" [innerHTML]="msg"></span>
       <button class="alert__btn" (click)="closeCustomAlert()">Close</button>
     </div>
 </div>

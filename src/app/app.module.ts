@@ -16,6 +16,8 @@ import { ConfirmWindowComponent } from './components/confirm-window/confirm-wind
 import { Pag404Component } from './components/pag404/pag404.component';
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule } from '@angular/forms';
+import { DateFormatPipe } from './pipes/date-format.pipe';
+import { TimeFormatPipe } from './pipes/time-format.pipe';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { FormsModule } from '@angular/forms';
     AlertComponent,
     ConfirmWindowComponent,
     Pag404Component,
-    HomeComponent
+    HomeComponent,
+    DateFormatPipe,
+    TimeFormatPipe
   ],
   imports: [
     BrowserModule,

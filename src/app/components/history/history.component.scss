@@ -1,6 +1,6 @@
 @import "../../../sass/mixins.scss","../../../sass/variables.scss";
 
-.history {
+.history{
     padding: 0.5rem 0;
     @include flex(column, nowrap, space-between, center);
     gap: 1rem;
