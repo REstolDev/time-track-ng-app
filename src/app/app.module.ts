@@ -18,6 +18,7 @@ import { HomeComponent } from './components/home/home.component';
 import { FormsModule } from '@angular/forms';
 import { DateFormatPipe } from './pipes/date-format.pipe';
 import { TimeFormatPipe } from './pipes/time-format.pipe';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { TimeFormatPipe } from './pipes/time-format.pipe';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
