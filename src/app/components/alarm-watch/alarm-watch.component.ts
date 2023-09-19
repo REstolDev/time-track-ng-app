@@ -11,10 +11,7 @@ import { SoundService } from 'src/app/services/sound.service';
 })
 export class AlarmWatchComponent {
 
-  restartSVG: string = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="header__svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/><path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/></svg>';
-  playSVG: string = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="header__svg" viewBox="0 0 16 16"><path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/></svg>';
-  pauseSVG: string = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="header__svg" viewBox="0 0 16 16"><path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/></svg>';
-  stopAlarmSVG: string = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="header__svg" viewBox="0 0 16 16"><path d="M5.164 14H15c-1.5-1-2-5.902-2-7 0-.264-.02-.523-.06-.776L5.164 14zm6.288-10.617A4.988 4.988 0 0 0 8.995 2.1a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 7c0 .898-.335 4.342-1.278 6.113l9.73-9.73zM10 15a2 2 0 1 1-4 0h4zm-9.375.625a.53.53 0 0 0 .75.75l14.75-14.75a.53.53 0 0 0-.75-.75L.625 15.625z"/></svg>';
+  btnState: string = "play";
   isAlarmInit: boolean = false;
   alarmInMiliSec:number =  0;
   
@@ -24,7 +21,6 @@ export class AlarmWatchComponent {
 
   alarmWatch: string ='00:00:00';
 
-  svg: SafeHtml = this.sanitizer.bypassSecurityTrustHtml(this.playSVG);
 
   constructor(private alarmService: AlarmService, private sanitizer: DomSanitizer, private sound:SoundService) {
   }
@@ -33,7 +29,7 @@ export class AlarmWatchComponent {
     this.alarmService.setAlarmTo$.subscribe((newAlarm: number)=>{ 
       this.alarmInMiliSec= newAlarm;
       this.alarmWatch=this.alarmService.MiliSecToHourMinSec(this.alarmInMiliSec);
-      this.svg = this.sanitizer.bypassSecurityTrustHtml(this.playSVG);
+      this.btnState = 'play';
       //controlamos que no este sonando la alarma
       if (!this.sound.isSoundPaused()) {
         this.sound.stop();
@@ -49,9 +45,9 @@ export class AlarmWatchComponent {
     if (!this.isAlarmInit) {
       if (!this.sound.isSoundPaused()) {
         this.sound.stop();
-        this.svg = this.sanitizer.bypassSecurityTrustHtml(this.restartSVG);
+        this.btnState = "restart";
       } else {
-        this.svg = this.sanitizer.bypassSecurityTrustHtml(this.pauseSVG);
+        this.btnState = "pause";
              
         // Configurar la fecha de inicio si es la primera vez que se inicia
         if (this.alarmInDate) {
@@ -72,7 +68,7 @@ export class AlarmWatchComponent {
             this.sound.play();
             this.alarmInDate = null; // Restablecer la fecha de inicio
             this.isAlarmInit = false; // Restablece la Posición inicial
-            this.svg = this.sanitizer.bypassSecurityTrustHtml(this.stopAlarmSVG);
+            this.btnState = "stop";
           } else {
             this.alarmWatch = this.alarmService.MiliSecToHourMinSec(this.restingTime);
           }
@@ -81,7 +77,7 @@ export class AlarmWatchComponent {
         this.isAlarmInit = true; // El temporizador está en ejecución
       }
     } else {
-      this.svg = this.sanitizer.bypassSecurityTrustHtml(this.playSVG);
+      this.btnState = "play";
       clearInterval(this.idInterval);
       this.isAlarmInit = false; // El temporizador está en pausa
     }
