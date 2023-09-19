@@ -11,7 +11,7 @@ export class AlarmSetComponent {
   mins: number = 0;
   secs: number = 0;
 
-  constructor(private alarmService: AlarmService) {}
+  constructor(private alarmService:AlarmService) {}
 
   limitHours(): void {
     if (this.hours < 0 || isNaN(this.hours)) {
@@ -39,10 +39,8 @@ export class AlarmSetComponent {
   
   
   setAlarm() {
-    console.log('setAlarm',this.hours,this.mins,this.secs);
-    this.alarmService.hours = this.hours;
-    this.alarmService.mins = this.mins;
-    this.alarmService.secs = this.secs;
-    this.alarmService.setAlarm();
+   
+    this.alarmService.setAlarm(this.hours, this.mins , this.secs);
+    
   }
 }

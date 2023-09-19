@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject,Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 
 @Injectable({
@@ -7,7 +7,6 @@ import { BehaviorSubject,Observable } from 'rxjs';
 })
 export class AlarmService {
   
-  alarmInMiliSec:number =  10000;
   hours: number = 0;
   mins: number= 0;
   secs: number = 0;
@@ -39,12 +38,12 @@ export class AlarmService {
     };
   
 
-   setAlarm = () => {
+   setAlarm = (hours: number, mins: number, secs: number) => {
   
     //convertimos a milisegundos
-    this.alarmInMiliSec = this.secs * 1000 + this.mins * 60 * 1000 + this.hours * 3600 * 1000;
+    let alarmInMiliSec :number = secs * 1000 + mins * 60 * 1000 + hours * 3600 * 1000;
   
-    this.setAlarmToSubject.next(this.alarmInMiliSec) ;
+    this.setAlarmToSubject.next(alarmInMiliSec) ;
   };
 
   
