@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { AlarmService } from 'src/app/services/alarm.service';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { SoundService } from 'src/app/services/sound.service';
 
 
@@ -22,7 +21,7 @@ export class AlarmWatchComponent {
   alarmWatch: string ='00:00:00';
 
 
-  constructor(private alarmService: AlarmService, private sanitizer: DomSanitizer, private sound:SoundService) {
+  constructor(private alarmService: AlarmService, private sound:SoundService) {
   }
 
   ngOnInit(){

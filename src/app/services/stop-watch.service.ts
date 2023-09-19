@@ -17,6 +17,7 @@ export class StopWatchService {
     secs : '00'
   };
   isPaused:boolean = true;
+  saveInterval: number = 10000;
 
   // Utiliza BehaviorSubject para crear una variable observable con un valor inicial
  private refreshTimeToSubject: BehaviorSubject<{ hours: string; mins: string; secs: string }> = new BehaviorSubject<{ hours: string; mins: string; secs: string }>({hours:'00',mins:'00',secs:'00'});
@@ -27,6 +28,7 @@ export class StopWatchService {
   constructor(
     private confirmService : ConfirmService,
     private localStorageApiService : LocalStorageAPIService) { }
+      
 
   convertMiliSecs= (TotalMiliSecs : number) => {
     const hours : string = String(Math.floor(TotalMiliSecs / (1000 * 60 * 60))).padStart(
@@ -85,7 +87,8 @@ stopStopWatch = () => {
       this.isPaused = true;
       this.startingTime = null;
       this.refreshTimeToSubject.next(this.time) ;
-
+      this.saveInterval=10000;
+      this.localStorageApiService.clearAutoSaved();
      });
 
   };
@@ -94,12 +97,21 @@ stopStopWatch = () => {
 // Actualizamos el cronómetro mostrando la hora, los minutos y los segundos
 refreshTimer = () => {
   if(this.startingTime){
+    
     const timeDifference : number = new Date().getTime() - this.startingTime.getTime();
     this.time = this.convertMiliSecs(timeDifference);
     this.refreshTimeToSubject.next(this.time) ;
+
+    // Actualiza el intervalo de auto guardado cada 60000 milisegundos (1 minuto)
+
+    if(timeDifference >= this.saveInterval ){
+      this.saveInterval += 60000;
+      this.localStorageApiService.addAutoSave(timeDifference);
+    }
 
   }
 };
 
 
+  
 }

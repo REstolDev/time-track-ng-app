@@ -15,13 +15,37 @@ export class LocalStorageAPIService {
  public isDataChanged$: Observable<boolean> = this.isDataChangedSubject.asObservable();
 
   projects : Project[]  = [] ;
+  autoSavedProjects : Project[]  = [] ;
   
   projectName : string = "My Project";
 
 
   constructor( 
     private alertService : AlertService, 
-    private alarmService : AlarmService) { }
+    private alarmService : AlarmService) { 
+         // Verificar si existe un autoSavedProject en el almacenamiento local
+    const autoSavedProjectsJSON = localStorage.getItem("autoSavedProjects");
+    if (autoSavedProjectsJSON) {
+      const autoSavedProjects = JSON.parse(autoSavedProjectsJSON);
+      if (autoSavedProjects.length > 0) {
+        const confirmSave = window.confirm(`Would you like to save the autosaved ${autoSavedProjects[0].name} from your last session?`);
+        if (confirmSave) {
+          this.recoverProjects();
+          this.projects.push(
+            new Project(
+                autoSavedProjects[0].name,
+                autoSavedProjects[0].date,
+                autoSavedProjects[0].totalTime
+            )
+         );
+          this.saveProjects();
+          this.isDataChangedSubject.next(true) ;
+          this.alertService.showCustomAlert("Project saved");
+        }
+        this.clearAutoSaved();
+      }
+    }
+    }
 
   recoverProjects(): void {
     try {
@@ -47,6 +71,39 @@ export class LocalStorageAPIService {
     this.isDataChangedSubject.next(true) ;
     this.alertService.showCustomAlert("Project saved");
   };
+
+
+  addAutoSave(timeDifference: number): void {
+    if (!this.projectName) this.projectName = "AUTO SAVED";
+    
+    try {
+      const autoSavedProjectsJSON = localStorage.getItem("autoSavedProjects");
+      this.autoSavedProjects = autoSavedProjectsJSON ? JSON.parse(autoSavedProjectsJSON) : [];
+    } catch (error) {
+      console.error("Error while recovering projects:", error);
+    }
+    
+    if (this.autoSavedProjects.length > 0) {
+      // Si ya existe, actualiza el timeDifference
+      this.autoSavedProjects[0].totalTime = timeDifference;
+    } else {
+      // Si no existe, crea un nuevo proyecto "AutoSaved"
+      this.autoSavedProjects.unshift(
+        new Project(
+          this.projectName,
+          new Date(Date.now()),
+          timeDifference
+        )
+      );
+    }
+  
+    try {
+      const autoSavedProjectsJSON = JSON.stringify(this.autoSavedProjects);
+      localStorage.setItem("autoSavedProjects", autoSavedProjectsJSON);
+    } catch (error) {
+      console.error("Error while saving projects:", error);
+    }
+  }
   
   
   saveProjects() : void {
@@ -60,11 +117,13 @@ export class LocalStorageAPIService {
 
 
   clear() : void {
-
         localStorage.removeItem("projects");
         this.alertService.showCustomAlert("Projects Deleted");
       };
    
+  clearAutoSaved() : void {
+    localStorage.removeItem("autoSavedProjects");
+  };
 
 
   orderProjectsByName = () => {

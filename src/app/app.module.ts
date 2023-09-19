@@ -18,7 +18,7 @@ import { HomeComponent } from './components/home/home.component';
 import { FormsModule } from '@angular/forms';
 import { DateFormatPipe } from './pipes/date-format.pipe';
 import { TimeFormatPipe } from './pipes/time-format.pipe';
-import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common'; 
 
 
 @NgModule({
